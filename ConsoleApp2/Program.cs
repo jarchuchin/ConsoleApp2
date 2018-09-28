@@ -77,12 +77,28 @@ namespace ConsoleApp2
 
                 //Copiando archivos xml
                 Console.WriteLine("Copiando archivo " + nombreSinExtension + ".xml - " + DateTime.Now);
-                File.Move(carpetaSource + nombreSinExtension + ".xml", carpetaDestino + nombreSinExtension + ".xml");
-                Console.WriteLine("Copiando archivo " + nombreSinExtension + ".pdf - " + DateTime.Now);
-                File.Move(carpetaSource + nombreSinExtension + ".pdf", carpetaDestino + nombreSinExtension + ".pdf");
-
+                if (File.Exists(carpetaSource + nombreSinExtension + ".xml"))
+                {
+                    File.Move(carpetaSource + nombreSinExtension + ".xml", carpetaDestino + nombreSinExtension + ".xml");
+                }
+                else {
+                    Console.WriteLine("Error no se encontro el archivo " + nombreSinExtension + ".xml");
+                }
 
                
+                Console.WriteLine("Copiando archivo " + nombreSinExtension + ".pdf - " + DateTime.Now);
+               
+                if (File.Exists(carpetaSource + nombreSinExtension + ".pdf"))
+                {
+                    File.Move(carpetaSource + nombreSinExtension + ".pdf", carpetaDestino + nombreSinExtension + ".pdf");
+                }
+                else
+                {
+                    Console.WriteLine("Error no se encontro el archivo " + nombreSinExtension + ".pdf");
+                }
+
+
+
 
             }
 
