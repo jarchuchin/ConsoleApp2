@@ -60,6 +60,8 @@ namespace ConsoleApp2
                 string nombre = file.Name;
                 string nombreSinExtension = file.Name.Substring(0, file.Name.LastIndexOf("."));
 
+
+
                 string folio = nombre.Substring(14);
                 folio = folio.Substring(0, folio.IndexOf("-"));
                 // Console.WriteLine(folio);
