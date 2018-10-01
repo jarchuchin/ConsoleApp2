@@ -68,34 +68,61 @@ namespace ConsoleApp2
                 // Enviar datos a estelar
                 Console.WriteLine("Enviando folio: " + folio + " a estelar..... " + DateTime.Now);
                 folioFilesSR.folioFilesSoapClient myff = new folioFilesSR.folioFilesSoapClient();
-             
-                string regreso = myff.folioFiles(folio, nombreSinExtension, "33234asdGGGF");
+
+                string regreso = "";
+
+                try
+                {
+                    regreso = myff.folioFiles(folio, nombreSinExtension, "33234asdGGGF");
+                }
+                catch {
+                    regreso = "Error: Fatal error al conectarse al estelar";
+                }
+               
 
                 Console.WriteLine("Respuesta de estelar: ########" + regreso);
 
 
 
                 //Copiando archivos xml
-                Console.WriteLine("Copiando archivo " + nombreSinExtension + ".xml - " + DateTime.Now);
-                if (File.Exists(carpetaSource + nombreSinExtension + ".xml"))
+                if (regreso.ToLower() == "ok")
                 {
-                    File.Move(carpetaSource + nombreSinExtension + ".xml", carpetaDestino + nombreSinExtension + ".xml");
-                }
-                else {
-                    Console.WriteLine("Error no se encontro el archivo " + nombreSinExtension + ".xml");
-                }
 
-               
-                Console.WriteLine("Copiando archivo " + nombreSinExtension + ".pdf - " + DateTime.Now);
-               
-                if (File.Exists(carpetaSource + nombreSinExtension + ".pdf"))
-                {
-                    File.Move(carpetaSource + nombreSinExtension + ".pdf", carpetaDestino + nombreSinExtension + ".pdf");
+                    if (File.Exists(carpetaSource + nombreSinExtension + ".xml"))
+                    {
+
+
+                        if (File.Exists(carpetaSource + nombreSinExtension + ".pdf"))
+                        {
+                            Console.WriteLine("Copiando archivo: " + nombreSinExtension + ".pdf - " + DateTime.Now);
+                            File.Move(carpetaSource + nombreSinExtension + ".pdf", carpetaDestino + nombreSinExtension + ".pdf");
+                            Console.WriteLine("Archivo copiado: " + nombreSinExtension + ".pdf - " + DateTime.Now);
+
+                            Console.WriteLine("Copiando archivo: " + nombreSinExtension + ".xml - " + DateTime.Now);
+                            File.Move(carpetaSource + nombreSinExtension + ".xml", carpetaDestino + nombreSinExtension + ".xml");
+                            Console.WriteLine("Archivo copiado: " + nombreSinExtension + ".xml - " + DateTime.Now);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Error no se encontro el archivo " + nombreSinExtension + ".pdf");
+                        }
+
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error no se encontro el archivo " + nombreSinExtension + ".xml");
+                    }
+
                 }
                 else
                 {
-                    Console.WriteLine("Error no se encontro el archivo " + nombreSinExtension + ".pdf");
+                    Console.WriteLine("Existe un error al conectarse al estelar: " + regreso);
                 }
+               
+
+               
+               
 
 
 
