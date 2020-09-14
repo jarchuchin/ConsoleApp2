@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 //using System.Data.SqlClient;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Configuration.Json;
+//using Microsoft.Extensions.Configuration;
+//using Microsoft.Extensions.Configuration.Json;
 using Npgsql;
 using System.IO;
 
-namespace dox_shot.Componentes
+namespace Componentes
 {
 
 
@@ -113,14 +113,15 @@ namespace dox_shot.Componentes
         private int OpenConnection()
         {
 
-            IConfiguration config = new ConfigurationBuilder()
-            .SetBasePath(Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", true, true)
-            .Build();
+            //IConfiguration config = new ConfigurationBuilder()
+            //.SetBasePath(Directory.GetCurrentDirectory())
+            //.AddJsonFile("appsettings.json", true, true)
+            //.Build();
 
             //Console.WriteLine(config["connectionString"]);
 
-            string mi = "Host=192.168.1.69;Username=jarchuchin;Password=chuchin;database=tabasco";
+           // string mi = "Host=192.168.1.69;Port=5432;Username=jarchuchin;Password=chuchin;database=tabasco";
+            string mi = "Host=postgresdbs;Port=5432;Username=jesusalvarado;Password=Hosting01;database=tabasco";
             //  this.connection = new  NpgsqlConnection (config["connectionString"]);
             this.connection = new NpgsqlConnection(mi);
             this.connection.Open();

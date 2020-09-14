@@ -7,7 +7,7 @@ using System.IO;
 using Npgsql;
 
 
-namespace dox_shot.Componentes
+namespace Componentes
 {
     public class Producto : DBObject
     {
@@ -20,7 +20,7 @@ namespace dox_shot.Componentes
 
 
 
-
+        
 
         // Methods
         public Producto()
@@ -66,6 +66,9 @@ namespace dox_shot.Componentes
         {
             DataSet ds = this.GetDS();
             DataTable dv = ds.Tables[0];
+            ConsoleApp2.srEnviarDatos.wsRecibirDatosSoapClient srED = new ConsoleApp2.srEnviarDatos.wsRecibirDatosSoapClient();
+
+            
 
 
             foreach (DataRow dr in dv.Rows)
@@ -76,9 +79,13 @@ namespace dox_shot.Componentes
                     desc = desc.Substring(0, 199);
                 }
                 Console.WriteLine(dr["id"] + "-" + desc);
+                string cad = Componentes.Utils.Convert_DataRowToJson(dr);
 
+               Console.WriteLine("----->>>>>>>>>>>> " + srED.HelloWorld(cad));
 
                 //###############
+
+
                 //grabar en server
 
 
