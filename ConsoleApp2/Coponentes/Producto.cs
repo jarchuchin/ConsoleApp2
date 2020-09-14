@@ -20,7 +20,7 @@ namespace Componentes
 
 
 
-
+        
 
         // Methods
         public Producto()
@@ -68,7 +68,7 @@ namespace Componentes
             DataTable dv = ds.Tables[0];
             ConsoleApp2.srEnviarDatos.wsRecibirDatosSoapClient srED = new ConsoleApp2.srEnviarDatos.wsRecibirDatosSoapClient();
 
-
+            
 
 
             foreach (DataRow dr in dv.Rows)
@@ -79,8 +79,9 @@ namespace Componentes
                     desc = desc.Substring(0, 199);
                 }
                 Console.WriteLine(dr["id"] + "-" + desc);
+                string cad = Componentes.Utils.Convert_DataRowToJson(dr);
 
-               Console.WriteLine("----->>>>>>>>>>>> " + srED.HelloWorld(Convert.ToString(dr["id"])));
+               Console.WriteLine("----->>>>>>>>>>>> " + srED.HelloWorld(cad));
 
                 //###############
                 //grabar en server
