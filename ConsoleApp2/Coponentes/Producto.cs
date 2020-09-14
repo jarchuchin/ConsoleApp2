@@ -84,6 +84,8 @@ namespace Componentes
                Console.WriteLine("----->>>>>>>>>>>> " + srED.HelloWorld(cad));
 
                 //###############
+
+
                 //grabar en server
 
 
