@@ -102,10 +102,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Coponentes\DBObject.cs" />
-    <Compile Include="Coponentes\Evento.cs" />
-    <Compile Include="Coponentes\Producto.cs" />
-    <Compile Include="Coponentes\Utils.cs" />
     <Compile Include="DBObject.cs" />
     <Compile Include="Evento.cs" />
     <Compile Include="Producto.cs" />

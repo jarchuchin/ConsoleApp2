@@ -8,5 +8,7 @@ namespace ConsoleApp2.Coponentes
 {
     class Evento
     {
+
+
     }
 }
