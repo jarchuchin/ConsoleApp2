@@ -14,8 +14,12 @@ namespace ConsoleApp2
             // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
             Console.WriteLine("Hello World!");
 
-            Componentes.Producto myp = new Componentes.Producto();
-            myp.GrabarProductos();
+           // Componentes.Producto myp = new Componentes.Producto();
+            //myp.GrabarProductos();
+
+
+            Componentes.Evento mye = new Componentes.Evento();
+            mye.EnviarEventos();
 
             Console.ReadKey();
 

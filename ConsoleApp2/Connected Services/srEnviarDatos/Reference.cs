@@ -9,86 +9,26 @@
 //------------------------------------------------------------------------------
 
 namespace ConsoleApp2.srEnviarDatos {
+    using System.Data;
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="srEnviarDatos.wsRecibirDatosSoap")]
     public interface wsRecibirDatosSoap {
         
-        // CODEGEN: Generating message contract since element name clave from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloWorld", ReplyAction="*")]
-        ConsoleApp2.srEnviarDatos.HelloWorldResponse HelloWorld(ConsoleApp2.srEnviarDatos.HelloWorldRequest request);
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        string HelloWorld(string clave);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloWorld", ReplyAction="*")]
-        System.Threading.Tasks.Task<ConsoleApp2.srEnviarDatos.HelloWorldResponse> HelloWorldAsync(ConsoleApp2.srEnviarDatos.HelloWorldRequest request);
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class HelloWorldRequest {
+        System.Threading.Tasks.Task<string> HelloWorldAsync(string clave);
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="HelloWorld", Namespace="http://tempuri.org/", Order=0)]
-        public ConsoleApp2.srEnviarDatos.HelloWorldRequestBody Body;
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/RecibirDatosConsulta", ReplyAction="*")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        string RecibirDatosConsulta(string LcadEvento, string LcadenaDatosPersonales, string LcadenaAD, string LcadenaEO, string LcadenaBM, string LcadenaMO, string LcadenaPI, System.Data.DataTable LcadenaDC, string LcadenaPlanTx, System.Data.DataTable LcadenaMC);
         
-        public HelloWorldRequest() {
-        }
-        
-        public HelloWorldRequest(ConsoleApp2.srEnviarDatos.HelloWorldRequestBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class HelloWorldRequestBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string clave;
-        
-        public HelloWorldRequestBody() {
-        }
-        
-        public HelloWorldRequestBody(string clave) {
-            this.clave = clave;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
-    public partial class HelloWorldResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="HelloWorldResponse", Namespace="http://tempuri.org/", Order=0)]
-        public ConsoleApp2.srEnviarDatos.HelloWorldResponseBody Body;
-        
-        public HelloWorldResponse() {
-        }
-        
-        public HelloWorldResponse(ConsoleApp2.srEnviarDatos.HelloWorldResponseBody Body) {
-            this.Body = Body;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
-    public partial class HelloWorldResponseBody {
-        
-        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
-        public string HelloWorldResult;
-        
-        public HelloWorldResponseBody() {
-        }
-        
-        public HelloWorldResponseBody(string HelloWorldResult) {
-            this.HelloWorldResult = HelloWorldResult;
-        }
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/RecibirDatosConsulta", ReplyAction="*")]
+        System.Threading.Tasks.Task<string> RecibirDatosConsultaAsync(string LcadEvento, string LcadenaDatosPersonales, string LcadenaAD, string LcadenaEO, string LcadenaBM, string LcadenaMO, string LcadenaPI, System.Data.DataTable LcadenaDC, string LcadenaPlanTx, System.Data.DataTable LcadenaMC);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -118,29 +58,20 @@ namespace ConsoleApp2.srEnviarDatos {
                 base(binding, remoteAddress) {
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        ConsoleApp2.srEnviarDatos.HelloWorldResponse ConsoleApp2.srEnviarDatos.wsRecibirDatosSoap.HelloWorld(ConsoleApp2.srEnviarDatos.HelloWorldRequest request) {
-            return base.Channel.HelloWorld(request);
-        }
-        
         public string HelloWorld(string clave) {
-            ConsoleApp2.srEnviarDatos.HelloWorldRequest inValue = new ConsoleApp2.srEnviarDatos.HelloWorldRequest();
-            inValue.Body = new ConsoleApp2.srEnviarDatos.HelloWorldRequestBody();
-            inValue.Body.clave = clave;
-            ConsoleApp2.srEnviarDatos.HelloWorldResponse retVal = ((ConsoleApp2.srEnviarDatos.wsRecibirDatosSoap)(this)).HelloWorld(inValue);
-            return retVal.Body.HelloWorldResult;
+            return base.Channel.HelloWorld(clave);
         }
         
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<ConsoleApp2.srEnviarDatos.HelloWorldResponse> ConsoleApp2.srEnviarDatos.wsRecibirDatosSoap.HelloWorldAsync(ConsoleApp2.srEnviarDatos.HelloWorldRequest request) {
-            return base.Channel.HelloWorldAsync(request);
+        public System.Threading.Tasks.Task<string> HelloWorldAsync(string clave) {
+            return base.Channel.HelloWorldAsync(clave);
         }
         
-        public System.Threading.Tasks.Task<ConsoleApp2.srEnviarDatos.HelloWorldResponse> HelloWorldAsync(string clave) {
-            ConsoleApp2.srEnviarDatos.HelloWorldRequest inValue = new ConsoleApp2.srEnviarDatos.HelloWorldRequest();
-            inValue.Body = new ConsoleApp2.srEnviarDatos.HelloWorldRequestBody();
-            inValue.Body.clave = clave;
-            return ((ConsoleApp2.srEnviarDatos.wsRecibirDatosSoap)(this)).HelloWorldAsync(inValue);
+        public string RecibirDatosConsulta(string LcadEvento, string LcadenaDatosPersonales, string LcadenaAD, string LcadenaEO, string LcadenaBM, string LcadenaMO, string LcadenaPI, System.Data.DataTable LcadenaDC, string LcadenaPlanTx, System.Data.DataTable LcadenaMC) {
+            return base.Channel.RecibirDatosConsulta(LcadEvento, LcadenaDatosPersonales, LcadenaAD, LcadenaEO, LcadenaBM, LcadenaMO, LcadenaPI, LcadenaDC, LcadenaPlanTx, LcadenaMC);
+        }
+        
+        public System.Threading.Tasks.Task<string> RecibirDatosConsultaAsync(string LcadEvento, string LcadenaDatosPersonales, string LcadenaAD, string LcadenaEO, string LcadenaBM, string LcadenaMO, string LcadenaPI, System.Data.DataTable LcadenaDC, string LcadenaPlanTx, System.Data.DataTable LcadenaMC) {
+            return base.Channel.RecibirDatosConsultaAsync(LcadEvento, LcadenaDatosPersonales, LcadenaAD, LcadenaEO, LcadenaBM, LcadenaMO, LcadenaPI, LcadenaDC, LcadenaPlanTx, LcadenaMC);
         }
     }
 }

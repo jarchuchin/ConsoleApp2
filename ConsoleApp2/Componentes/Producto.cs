@@ -65,13 +65,13 @@ namespace Componentes
         public int GrabarProductos()
         {
             DataSet ds = this.GetDS();
-            DataTable dv = ds.Tables[0];
+            DataTable dt = ds.Tables[0];
             ConsoleApp2.srEnviarDatos.wsRecibirDatosSoapClient srED = new ConsoleApp2.srEnviarDatos.wsRecibirDatosSoapClient();
 
             
 
 
-            foreach (DataRow dr in dv.Rows)
+            foreach (DataRow dr in dt.Rows)
             {
                 String desc = Convert.ToString(dr["descripcion"]);
                 if (desc.Length > 200)
